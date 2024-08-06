@@ -82,7 +82,7 @@ py -m pip install --user ROPgadget
 
 # -- install VNC server --
 # install options reference: https://www.tightvnc.com/doc/win/TightVNC_2.7_for_Windows_Installing_from_MSI_Packages.pdf
-choco install --ignore-detected-reboot tightvnc -y --installArguments 'ADDLOCAL=Server SET_RFBPORT=1 VALUE_OF_RFBPORT=5912 SET_USEVNCAUTHENTICATION=1 VALUE_OF_USEVNCAUTHENTICATION=1 SET_PASSWORD=1 SET_DISCONNECTACTION=2 VALUE_OF_PASSWORD=abcd'
+choco install --ignore-detected-reboot tightvnc -y --installArguments 'ADDLOCAL=Server SET_RFBPORT=1 VALUE_OF_RFBPORT=5912 SET_USEVNCAUTHENTICATION=1 VALUE_OF_USEVNCAUTHENTICATION=0 SET_PASSWORD=1 VALUE_OF_PASSWORD=abcd'
 # this will be done later when the service actually exists
 #Set-Service -Name tvnserver -StartupType 'Manual'
 

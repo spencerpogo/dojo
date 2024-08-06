@@ -119,7 +119,7 @@ def view_desktop_win():
         "resize": "remote",
         "path": url_for("pwncollege_workspace.forward_workspace", service=service, service_path="websockify"),
         "view_only": int(view_only),
-        "password": "abcd",
+        "password": "",
     }
     iframe_src = url_for("pwncollege_workspace.forward_workspace", service=service, service_path="vnc.html", **vnc_params)
 

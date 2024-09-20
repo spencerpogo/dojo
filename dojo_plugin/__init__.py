@@ -16,6 +16,7 @@ from CTFd.plugins import register_admin_plugin_menu_bar
 from CTFd.plugins.challenges import CHALLENGE_CLASSES, BaseChallenge
 from CTFd.plugins.flags import FLAG_CLASSES, BaseFlag, FlagException
 
+from .api import api
 from .models import Dojos, DojoChallenges, Belts, Emojis
 from .config import DOJO_HOST, bootstrap
 from .utils import unserialize_user_flag, render_markdown
@@ -25,14 +26,13 @@ from .pages.dojo import dojo
 from .pages.workspace import workspace
 from .pages.sensai import sensai
 from .pages.users import users
-from .pages.settings import settings_override
+from .pages.settings import settings_override, WorkspaceTokensForm
 from .pages.discord import discord
 from .pages.course import course
 from .pages.canvas import sync_canvas_user, canvas
 from .pages.writeups import writeups
 from .pages.belts import belts
 from .pages.index import static_html_override
-from .api import api
 
 
 class DojoChallenge(BaseChallenge):
@@ -141,6 +141,7 @@ def load(app):
     app.register_blueprint(api, url_prefix="/pwncollege_api/v1")
 
     app.jinja_env.filters["markdown"] = render_markdown
+    app.jinja_env.globals.update(WorkspaceTokensForm=WorkspaceTokensForm)
 
     register_admin_plugin_menu_bar("Dojos", "/admin/dojos")
     register_admin_plugin_menu_bar("Desktops", "/admin/desktops")

@@ -1,13 +1,21 @@
 from flask import url_for, render_template
+from CTFd.forms import BaseForm
+from CTFd.forms.fields import SubmitField
 from CTFd.models import UserTokens
 from CTFd.utils import get_config
 from CTFd.utils.helpers import get_infos, markup
 from CTFd.utils.decorators import authed_only
 from CTFd.utils.user import get_current_user
+from wtforms.fields.html5 import DateField, URLField
 
 from ..models import Dojos, SSHKeys, DojoMembers
 from ..config import DISCORD_CLIENT_ID
 from ..utils.discord import get_discord_member, discord_avatar_asset
+
+
+class WorkspaceTokensForm(BaseForm):
+    expiration = DateField("Expiration")
+    submit = SubmitField("Generate")
 
 
 @authed_only
